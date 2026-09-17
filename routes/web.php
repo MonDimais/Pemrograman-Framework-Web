@@ -55,4 +55,8 @@ Route::middleware(['auth', 'role:admin,kasir'])->group(function () {
         PosController::class,
         'store'
     ])->name('pos.store');
+
+    Route::get('/pos/history', function () {
+        return 'Riwayat transaksi belum tersedia.';
+    })->name('pos.history');
 });

@@ -26,6 +26,10 @@
                     class="{{ request()->routeIs('pos.index') ? 'text-indigo-600' : 'text-gray-500' }}">
                     Transaksi
                 </a>
+                <a href="{{ route('pos.history') }}"
+                    class="'text-indigo-600' : 'text-gray-500'">
+                    Riwayat Transaksi Saya
+                </a>
             </div>
 
             <div class="flex items-center space-x-4 text-sm">
