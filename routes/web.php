@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\LoginController;
@@ -60,3 +61,7 @@ Route::middleware(['auth', 'role:admin,kasir'])->group(function () {
         return 'Riwayat transaksi belum tersedia.';
     })->name('pos.history');
 });
+
+Route::get('/reports/sales', [ReportController::class, 'sales'])
+    ->middleware('auth')
+    ->name('report.sales');
