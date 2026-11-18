@@ -27,13 +27,13 @@ class ProductController extends Controller
         $products = $query->latest()->paginate(10)->withQueryString();
         $categories = Category::orderBy('name')->get();
 
-        return view('master-data.product.index', compact('products', 'categories'));
+        return view('master-data.products.index', compact('products', 'categories'));
     }
 
     public function create()
     {
         $categories = Category::orderBy('name')->get();
-        return view('master-data.product.create', compact('categories'));
+        return view('master-data.products.create', compact('categories'));
     }
 
     public function store(StoreProductRequest $request)
@@ -55,7 +55,7 @@ class ProductController extends Controller
             ->take(10)
             ->get();
 
-        return view('master-data.product.show', compact('product', 'totalTerjual', 'riwayat'));
+        return view('master-data.products.show', compact('product', 'totalTerjual', 'riwayat'));
     }
 
     public function edit(Product $product)

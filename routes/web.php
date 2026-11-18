@@ -39,11 +39,8 @@ Route::post('/logout', [LoginController::class, 'destroy'])
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('categories', CategoryController::class);
     Route::resource('products', ProductController::class);
-
-    Route::get('/reports/sales', [
-        ReportController::class,
-        'sales'
-    ])->name('report.sales');
+    Route::get('/reports/sales', [ReportController::class, 'sales'])->name('report.sales');
+    Route::get('/reports/sales/export', [ReportController::class, 'export'])->name('report.export');
 });
 
 Route::middleware(['auth', 'role:admin,kasir'])->group(function () {
@@ -54,7 +51,3 @@ Route::middleware(['auth', 'role:admin,kasir'])->group(function () {
         return 'Riwayat transaksi belum tersedia.';
     })->name('pos.history');
 });
-
-Route::get('/reports/sales', [ReportController::class, 'sales'])
-    ->middleware('auth')
-    ->name('report.sales');

@@ -14,12 +14,12 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::latest()->paginate(10);
-        return view('master-data.category.index', compact('categories'));
+        return view('master-data.categories.index', compact('categories'));
     }
 
     public function create()
     {
-        return view('master-data.category.create');
+        return view('master-data.categories.create');
     }
 
     public function store(Request $request)
